@@ -1,0 +1,157 @@
+
+.birthday-picker{
+  $char-size: 20px;
+  $primary-color: #007BFF;
+  $line-color: rgba(0,0,0,0.1);
+
+  $day-w:   $char-size*1.5;
+  $month-w: $char-size*2;
+  $year-w:  $char-size*1.5;
+
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  position: relative;
+  display: inline-block;
+  min-width: 7em;
+  box-sizing: border-box;
+  min-height: 2.5em;
+  border: 1px solid $line-color;
+  border-radius: 3px;
+
+  input{
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    top:0;
+    left:0;
+    bottom:0;
+    right: 0;
+    padding: 0.375rem 0.75rem;
+    border: 0;
+    border-radius: 5px;
+  }
+
+  &_row{
+    height: 1.2 * $char-size;
+    line-height: 1.2 * $char-size;
+  }
+
+  &_dropdown{
+    font-size: $char-size*0.75;
+
+    // text-align: center;
+    width: 580px;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid $line-color;
+    border-radius: 0 0 3px 3px;
+    box-shadow: 2px 2px 10px $line-color;
+    z-index: 1001;
+
+    &.attach-top{     bottom:100%; }
+    &.attach-bottom{  top:100%; }
+    &.attach-left{    left:0; }
+    &.attach-right{   right:0; }
+
+    &-header{
+      background-color: $primary-color;
+      color: #fff;
+      padding: 10px;
+      text-align: right;
+      font-size: 1.2em;
+      font-weight: 300;
+      font-family: Roboto, Helvetica, Arial, sans-serif;
+    }
+  }
+  &_carriage{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    width: 10px;
+    height: calc(100% - 2*5px);
+    cursor: pointer;
+    transition: transform 0.3s;
+
+    &:after{
+      content: '';
+      position: absolute;
+      top: calc(50% - 2px);
+      width: 0;
+      height:0;
+      border:5px solid transparent;
+      border-top-color: #000;
+    }
+    &.bp-opened{
+      transform: rotate(180deg);
+    }
+  }
+  &_row{
+    white-space: nowrap;
+  }
+  &_btn{
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 3px;
+    margin: 0px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: $char-size;
+    transition: background-color 0.3s;
+
+    &.bdp-active{ background-color: $primary-color; color: #fff; }
+    &.bdp-active:hover{ background-color: darken($primary-color,10); color: #fff; }
+    &:hover{ background-color: $line-color; }
+  }
+
+  &_months{
+    border-right: 1px solid $line-color;
+    border-left: 1px solid $line-color;
+  }
+
+  &_day{
+    width: $day-w;
+  }
+
+  &_month{
+    width: $month-w;
+  }
+  &_year{
+    width: $year-w;
+    &:first-child{  width: $year-w*1.5; }
+  }
+
+  &_btn-pane{
+    display: inline-block;
+    vertical-align: top;
+    height: $char-size*9.9;
+    overflow-y: auto;
+  }
+
+  // INLINE
+  &_inline{
+    input, .birthday-picker_carriage{ display: none; }
+
+    .birthday-picker_dropdown{
+      position: relative;
+      z-index: inherit;
+      box-shadow: none;
+      border: none;
+    }
+  }
+
+}
+
+
+.dropdown-trans-enter,
+.dropdown-trans-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.dropdown-trans-enter-to,
+.dropdown-trans-leave {
+  opacity: 1;
+  transform: translateY(0);
+}
+.dropdown-trans-enter-active,
+.dropdown-trans-leave-active {
+  transition: opacity 100ms ease-out, transform 100ms ease-out;
+}
