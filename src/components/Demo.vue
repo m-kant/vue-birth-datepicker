@@ -33,7 +33,7 @@
         <div class="col4">
           <h4>Output</h4>
           <label>
-            <div class="remark">String or timestamp for local 1-st january 00 hours 00 minutes</div>
+            <div class="remark">String or timestamp for local date 00 hours 00 minutes</div>
             value: {{date}}</label>
           <label>
             <div class="remark">Reselect date after changing "valueIsString" to affect value</div>
