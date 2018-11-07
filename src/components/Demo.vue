@@ -1,5 +1,10 @@
 <template>
   <div class="demo">
+    	<br />
+      <a class="btn btn-default" href="http://mkant.ru/mink-js/"><< Demos</a>
+      <a class="btn btn-default" href="http://mkant.ru">MKant.ru</a>
+      <a class="btn btn-default" href="https://github.com/m-kant/vue-birth-datepicker">View at <b>GIT Hub</b></a>
+      <!-- <a class="btn btn-default" href="https://www.npmjs.com/package/vue-birth-datepicker">View at <b>NPM</b></a> -->
       <h1>vue-birth-datepicker demo</h1>
       <p>Date picker for distant dates, such as birthday.
         Just three clicks to choose any month and day 20 or 50 years ago.</p>
@@ -128,6 +133,15 @@ export default {
     .demo{
         max-width: 960px;
         margin: auto;
+    }
+    .btn{
+      display: inline-block;
+      border: 1px solid #ccc;
+      padding: 7px 10px;
+      margin: 1px;
+      border-radius: 3px;
+      color: inherit;
+      text-decoration: none;
     }
     .input-pane{
       background-color: #eee;

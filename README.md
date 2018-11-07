@@ -3,6 +3,8 @@ Date picker for distant dates, such as birthday.
 Just three clicks to choose any month and day 20 or 50 years ago.
 ![Screenshot of vue-birth-datepicker](./vue-birth-datepicker-screenshot.png)
 
+## [DEMO](http://mkant.ru/mink-js/vue-birth-datepicker/)
+
 ## Istallation
 ```javascript
 npm i vue-birth-datepicker --S
