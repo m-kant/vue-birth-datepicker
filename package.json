@@ -7,7 +7,7 @@
   "module": "dist/vueBirthDatepicker.umd.js",
   "unpkg":  "dist/vueBirthDatepicker.umd.min.js",
   "browser": {
-    "./src": "src/components/birth-datepicker.vue"
+    "./vue": "src/components/birth-datepicker.vue"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
