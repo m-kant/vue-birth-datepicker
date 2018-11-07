@@ -45,13 +45,19 @@ Configure datepicker look and behaviour with attributes
    <td>valueIsString</td>
    <td>boolean</td>
    <td>false</td>
-   <td>If "true", value is a string of format depending on other atrbutes, by default like "1990.12.31". If "false" value is a unix milliseconds timestamp for local date 00 hours 00 minutes.</td>
+   <td>If "true", value is a string of format depending on other attributes, by default like "1990.12.31". If "false" value is a unix milliseconds timestamp for local date 00 hours 00 minutes.</td>
  </tr>
  <tr>
    <td>inline</td>
    <td>boolean</td>
    <td>false</td>
    <td>If "true", widget is shown as inline-block element. Otherwise as an input with opening dropdown.</td>
+ </tr>
+ <tr>
+   <td>high</td>
+   <td>boolean</td>
+   <td>false</td>
+   <td>High dropdown view. If "true", months and days are above years. Otherwise all in one row.</td>
  </tr>
  <tr>
    <td>hideHeader</td>

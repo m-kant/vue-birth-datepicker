@@ -1,6 +1,6 @@
 <template>
 
-  <div class="birthday-picker" :class="{'birthday-picker_inline':inline}">
+  <div class="birthday-picker" :class="{'birthday-picker_inline':inline, 'birthday-picker_high':high}">
     <input type="text" class="" :value="valueStr" :placeholder="placeholder"  @click.stop.prevent="toggle()" @input="onManualInput" />
     <div class="birthday-picker_carriage" :class="{'bp-opened': active}" @click.stop.prevent="toggle()"></div>
 
@@ -37,6 +37,7 @@ export default {
     closeOnSet:   { type: Boolean, default: false },
     hideHeader:   { type: Boolean, default: false },
     inline:       { type: Boolean, default: false },
+    high:         { type: Boolean, default: false },
     locale:       { type: [String, Array],  default: "en" },
     minYear:      { type: [Number] },
     maxYear:      { type: Number },

@@ -4,6 +4,7 @@
   $primary-color: #007BFF;
   $line-color: rgba(0,0,0,0.1);
 
+  // cells width
   $day-w:   $char-size*1.5;
   $month-w: $char-size*2;
   $year-w:  $char-size*1.5;
@@ -35,11 +36,31 @@
     line-height: 1.2 * $char-size;
   }
 
+
+  // panes width
+  $days-w: $char-size * 10 * 0.8;
+  $months-w: $char-size * 6 * 0.7;
+  $years-w: $char-size * 11 * 2 * 0.75;
+
+  &_years{ width: $years-w; }
+  &_months{
+    width: $months-w;
+    border-right: 1px solid $line-color;
+    border-left: 1px solid $line-color;
+  }
+  &_days{ width: $days-w; }
+
+  &_day{ width: 20%; }
+  &_month{ width: 50%; }
+  &_year{
+    $w: 9.5%;
+    width: $w;
+    &:first-child{  width: 100% - $w * 9; }
+  }
+
   &_dropdown{
     font-size: $char-size*0.75;
-
-    // text-align: center;
-    width: 580px;
+    width: $days-w + $months-w + $years-w + 2px;
     position: absolute;
     background-color: #fff;
     border: 1px solid $line-color;
@@ -62,6 +83,14 @@
       font-family: Roboto, Helvetica, Arial, sans-serif;
     }
   }
+
+  &_high{
+    .birthday-picker_dropdown{ width: $years-w; }
+    .birthday-picker_days{ width: $years-w * 0.75 - 2px; }
+    .birthday-picker_months{ width: $years-w * 0.25; }
+  }
+
+
   &_carriage{
     position: absolute;
     top: 5px;
@@ -102,22 +131,6 @@
     &:hover{ background-color: $line-color; }
   }
 
-  &_months{
-    border-right: 1px solid $line-color;
-    border-left: 1px solid $line-color;
-  }
-
-  &_day{
-    width: $day-w;
-  }
-
-  &_month{
-    width: $month-w;
-  }
-  &_year{
-    width: $year-w;
-    &:first-child{  width: $year-w*1.5; }
-  }
 
   &_btn-pane{
     display: inline-block;

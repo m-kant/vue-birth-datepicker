@@ -17,6 +17,7 @@
         v-model="date"
         :valueIsString="valueIsString"
         :inline="inline"
+        :high="high"
         :placeholder="placeholder"
         :attachment="attachment"
         :closeOnSet="closeOnSet"
@@ -40,6 +41,7 @@
             <input type="checkbox" v-model="valueIsString"> valueIsString</label>
           <h4>Flags</h4>
           <label><input type="checkbox" v-model="inline"> inline</label>
+          <label><input type="checkbox" v-model="high"> high</label>
           <label><input type="checkbox" v-model="hideHeader"> hideHeader</label>
         </div>
         <div class="col4">
@@ -91,6 +93,7 @@ export default {
       date: null,
 
       inline: false,
+      high: false,
       closeOnSet: false,
       valueIsString: false,
       yearFirst: false,
