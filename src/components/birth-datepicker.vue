@@ -7,7 +7,7 @@
     <transition name="dropdown-trans">
       <div class="birthday-picker_dropdown" :class="'attach-'+attachmentX+' attach-'+attachmentY" v-if="active||inline">
 
-        <header v-if="!hideHeader" class="birthday-picker_dropdown-header">{{valueHeader}}</header>
+        <div v-if="!hideHeader" class="birthday-picker_dropdown-header">{{valueHeader}}</div>
         <pick-day :value="day" @input="setDay" />
         <pick-month :value="month" @input="setMonth" :months="months" />
         <pick-year :value="year" @input="setYear" :min="minYear" :max="maxYear" />

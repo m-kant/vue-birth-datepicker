@@ -1,7 +1,7 @@
 # vueBirthDatepicker
 Date picker for distant dates, such as birthday.
 Just three clicks to choose any month and day 20 or 50 years ago.
-![Screenshot of vue-birth-datepicker](./vue-birth-datepicker-screenshot.png)
+![Screenshot of vue-birth-datepicker](https://github.com/m-kant/vue-birth-datepicker/raw/master/vue-birth-datepicker-screenshot.png)
 
 ## [DEMO](http://mkant.ru/mink-js/vue-birth-datepicker/)
 
@@ -12,15 +12,15 @@ npm i vue-birth-datepicker --S
 ## Inclusion to app
 ### Import ES6
 ```javascript
-import birthDatepicker from 'vue-date-picker';
-// include 'vue-date-picker/dist/vueBirthDatepicker.css' into your styles
+import birthDatepicker from 'vue-birth-datepicker';
+// include 'vue-birth-datepicker/dist/vueBirthDatepicker.css' into your styles
 ```
 
 ### Import .vue single file component
 ```javascript
-import birthDatepicker from 'vue-date-picker/vue';
+import birthDatepicker from 'vue-birth-datepicker/vue';
 ```
-Don't need to include styles separately in this case
+Don't need to include styles separately in this case. Vue-loader and scss loader required in you build system.
 
 ### Browser
 ```html
