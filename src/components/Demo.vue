@@ -1,7 +1,5 @@
 <template>
   <div class="demo">
-    	<br />
-      <a class="btn btn-default" href="http://mkant.ru/mink-js/"><< Demos</a>
       <a class="btn btn-default" href="http://mkant.ru">MKant.ru</a>
       <a class="btn btn-default" href="https://github.com/m-kant/vue-birth-datepicker">View at <b>GIT Hub</b></a>
       <!-- <a class="btn btn-default" href="https://www.npmjs.com/package/vue-birth-datepicker">View at <b>NPM</b></a> -->

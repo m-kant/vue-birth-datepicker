@@ -86,8 +86,9 @@
 
   &_high{
     .birthday-picker_dropdown{ width: $years-w; }
-    .birthday-picker_days{ width: $years-w * 0.70 - 2px; }
-    .birthday-picker_months{ width: $years-w * 0.30; }
+    .birthday-picker_days{ width: $years-w * 0.70 - 2px;  }
+    .birthday-picker_months{ width: $years-w * 0.30; border-right: none;}
+    .birthday-picker_years{ border-top: 1px solid $line-color;}
   }
 
 

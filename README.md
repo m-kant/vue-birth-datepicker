@@ -16,9 +16,9 @@ import birthDatepicker from 'vue-date-picker';
 // include 'vue-date-picker/dist/vueBirthDatepicker.css' into your styles
 ```
 
-### Import with vue-loader and scss-loader
+### Import .vue single file component
 ```javascript
-import birthDatepicker from 'vue-date-picker/src';
+import birthDatepicker from 'vue-date-picker/vue';
 ```
 Don't need to include styles separately in this case
 
