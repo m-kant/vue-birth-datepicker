@@ -19,10 +19,10 @@
 </template>
 
 <script>
-import computed from './computed';
-import pickDay from './pick-day';
-import pickMonth from './pick-month';
-import pickYear from './pick-year';
+import computed   from './components/computed';
+import pickDay    from './components/pick-day';
+import pickMonth  from './components/pick-month';
+import pickYear   from './components/pick-year';
 
 export default {
   name: 'vueBirthDatepicker',
@@ -170,4 +170,4 @@ export default {
 };
 </script>
 
-<style lang="scss" src='./birth-datepicker.scss' />
+<style lang="scss" src='./components/birth-datepicker.scss' />

@@ -18,6 +18,8 @@ import birthDatepicker from 'vue-birth-datepicker';
 
 ### Import .vue single file component
 ```javascript
+import birthDatepicker from 'vue-birth-datepicker/src/birth-datepicker';
+// if substitution is working:
 import birthDatepicker from 'vue-birth-datepicker/vue';
 ```
 Don't need to include styles separately in this case. Vue-loader and scss loader required in you build system.

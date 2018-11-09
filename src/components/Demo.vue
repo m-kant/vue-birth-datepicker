@@ -80,7 +80,7 @@
 
 <script>
 
-import birthDatepicker from './birth-datepicker';
+import birthDatepicker from '../birth-datepicker';
 
 export default {
 
