@@ -62,7 +62,7 @@
 
   &_dropdown{
     font-size: $char-size*0.75;
-    width: $days-w + $months-w + $years-w + 2px;
+    width: $days-w + $months-w + $years-w + 10px;
     position: absolute;
     background-color: #fff;
     border: 1px solid $line-color;
