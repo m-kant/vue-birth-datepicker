@@ -4,6 +4,7 @@ console.log("target is", vueTarget); // eslint-disable-line
 module.exports = {
   outputDir: vueTarget === 'lib' ? 'dist' : 'demo',
   baseUrl: '',
+  filenameHashing: false,
   configureWebpack: {
   }
 }
