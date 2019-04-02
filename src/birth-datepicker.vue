@@ -23,9 +23,9 @@
         class="birthday-picker_dropdown"
         :class="'attach-'+attachmentX+' attach-'+attachmentY"
         v-if="active||inline"
-        click.stop=""
         @focus="dropdownIsFocused=true;"
         @blur=" dropdownIsFocused=false; $nextTick(onWidgetBlur);"
+        @click.stop.prevent="nothing"
       >
 
         <div v-if="!hideHeader" class="birthday-picker_dropdown-header">{{valueHeader}}</div>
@@ -158,6 +158,7 @@ export default {
   },
 
   methods: {
+    nothing(){console.log('nothing');},
     assignValue(){
       if (this.valueIsString && this.value) {
         if(!this.parseStringDate(this.value)) throw new Error('Can not parse date string');

@@ -3,7 +3,7 @@
       <div class="birthday-picker_years">
         <table cellspacing="0" cellpadding="0">
 
-          <tr class="bdp-increase-year" @click.stop="increaseYear">
+          <tr class="bdp-increase-year" @click.stop.prevent="increaseYear">
             <td :colspan="colsCount">
               &nbsp; <i class="birthday-picker_carriage-up" v-if="ableToIncrease"/> &nbsp;
             </td>
@@ -14,14 +14,14 @@
               <a
                v-if="year"
                :class="{'bdp-active': year===value, 'disabled': year<min || (max&&year>max), 'bdp-today':year===today}"
-               @click.stop="emitInput(year)"
+               @click.stop.prevent="emitInput(year)"
               >
                 {{yearStr(year)}}
               </a>
             </td>
           </tr>
 
-          <tr class="bdp-decrease-year" @click.stop="decreaseYear">
+          <tr class="bdp-decrease-year" @click.stop.prevent="decreaseYear">
             <td :colspan="colsCount">
               &nbsp; <i class="birthday-picker_carriage-down" v-if="ableToDecrease"/> &nbsp;
             </td>

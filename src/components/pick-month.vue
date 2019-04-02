@@ -7,7 +7,7 @@
       <tr v-for="(monthRow, i) in monthRows" :key="'monthrow'+i">
         <td v-for="(monthNum, j) in monthRow" :key="'monthcell'+j">
           <a
-           @click.stop="emitInput(monthNum)"
+           @click.stop.prevent="emitInput(monthNum)"
           :class="{'bdp-active': monthNum===value, 'bdp-today': monthNum===today}"
           >
            {{months[monthNum]}}

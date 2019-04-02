@@ -16,7 +16,7 @@
       <birth-datepicker v-model="date" :inline="true" selectYear />
 
       <h3>Playground</h3>
-      <div style="padding: 10px; background-color: #eee;" @click.stop="">
+      <div style="padding: 10px; background-color: #eee;" @click.stop.prevent="">
         <birth-datepicker
           v-model="date"
           :valueIsString="valueIsString"
