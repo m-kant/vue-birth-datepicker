@@ -2,35 +2,38 @@
   <div class="demo">
       <a class="btn btn-default" href="http://mkant.ru">MKant.ru</a>
       <a class="btn btn-default" href="https://github.com/m-kant/vue-birth-datepicker">View at <b>GIT Hub</b></a>
-      <!-- <a class="btn btn-default" href="https://www.npmjs.com/package/vue-birth-datepicker">View at <b>NPM</b></a> -->
+      <a class="btn btn-default" href="https://www.npmjs.com/package/vue-birth-datepicker">View at <b>NPM</b></a>
       <h1>vue-birth-datepicker demo</h1>
       <p>Date picker for distant dates, such as birthday.
         Just three clicks to choose any month and day 20 or 50 years ago.</p>
 
       <h3>Basic</h3>
       <div class='code-pane'>{{codeBasic}}</div>
-      <birth-datepicker v-model="date" />
+      <birth-datepicker v-model="date" selectYear/>
 
       <h3>Inline</h3>
       <div class='code-pane'>{{codeInline}}</div>
-      <birth-datepicker v-model="date" :inline="true" />
+      <birth-datepicker v-model="date" :inline="true" selectYear />
 
       <h3>Playground</h3>
-      <birth-datepicker
-        v-model="date"
-        :valueIsString="valueIsString"
-        :inline="inline"
-        :high="high"
-        :placeholder="placeholder"
-        :attachment="attachment"
-        :closeOnSet="closeOnSet"
-        :yearFirst="yearFirst"
-        :delimiter="delimiter"
-        :hideHeader="hideHeader"
-        :minYear="minYear?Number(minYear):null"
-        :maxYear="maxYear?Number(maxYear):null"
-        :locale="calcLocale"
-      />
+      <div style="padding: 10px; background-color: #eee;" @click.stop="">
+        <birth-datepicker
+          v-model="date"
+          :valueIsString="valueIsString"
+          :inline="inline"
+          :high="high"
+          :placeholder="placeholder"
+          :attachment="attachment"
+          :closeOnSet="closeOnSet"
+          :yearFirst="yearFirst"
+          :delimiter="delimiter"
+          :hideHeader="hideHeader"
+          :minYear="minYear?Number(minYear):null"
+          :maxYear="maxYear?Number(maxYear):null"
+          :locale="calcLocale"
+        />
+      </div>
+
 
       <p>Specify attributes:</p>
       <div class='input-pane'>
@@ -105,12 +108,13 @@ export default {
       placeholder: 'Wow!',
       attachment: 'bottom left',
       maxYear: (new Date().getFullYear()) - 5,
-      minYear: (new Date().getFullYear()) - 40,
+      // minYear: (new Date().getFullYear()) - 40,
+      minYear: 1959,
       demolocale: 'en',
       customLocale: 'JN FB MR AP MY JU JL AG SP OK NV DC',
 
       codeBasic: '<birth-datepicker v-model="date" />',
-      codeInline: '<birth-datepicker v-model="date" :inline="true" />'
+      codeInline: '<birth-datepicker v-model="date" :inline="true" selectYear />'
   }; },
 
   computed: {
@@ -118,7 +122,11 @@ export default {
       if(this.demolocale) return this.demolocale;
       return this.customLocale.split(/[,\s]+/);
     }
-  }
+  },
+
+  methods: {
+
+  },
 }
 </script>
 

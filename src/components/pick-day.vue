@@ -1,20 +1,26 @@
 <template>
 
-  <div class="birthday-picker_btn-pane birthday-picker_days">
-    <div class="birthday-picker_row"></div>
-    <div
-      v-for="(dayRow, i) in dayRows"
-      :key="'dayrow'+i"
-      class="birthday-picker_row"
-    >
-      <span
-        v-for="dayItem in dayRow"
-        :key="dayItem"
-        class="birthday-picker_btn birthday-picker_day"
-        :class="{'bdp-active': dayItem===value}"
-        @click.stop="emitInput(dayItem)"
-      >{{dayItem}}</span>
-    </div>
+  <div class="birthday-picker_days">
+    <table cellspacing="0" cellpadding="0">
+      <tr><td :colspan="colsCount">&nbsp;</td></tr>
+      <tr
+        v-for="(dayRow, i) in dayRows"
+        :key="'dayrow'+i"
+      >
+        <td
+          v-for="(dayItem, j) in dayRow"
+          :key="'daycell'+j"
+
+        >
+          <a
+            v-if="dayItem"
+           :class="{'bdp-active': dayItem===value, 'bdp-today': dayItem===today}"
+           @click.stop="emitInput(dayItem)"
+          >{{dayItem}}</a>
+        </td>
+      </tr>
+
+    </table>
   </div>
 
 </template>
@@ -25,11 +31,12 @@ export default {
 
   props: {
     value: { type: [Number] },
+    today: { type: Number, default: () => (new Date()).getDay() }
   },
 
   data(){ return {
 
-    dayCols: 5,
+    colsCount: 5,
 
   }; },
 
@@ -38,12 +45,16 @@ export default {
     dayRows(){
       const res = [];
       const max = 31;
+      const rowsCount = Math.ceil(max/this.colsCount);
       let day = 1;
-      let row;
 
-      for(let r=0; day <= max; r++){
-        row = [];
-        for(let i=0; i < this.dayCols && day <= max; i++) row.push(day++);
+      for(let r=0; r < rowsCount; r++){
+        let row = [];
+        for(let i=0; i < this.colsCount; i++){
+          let val = day++;
+          if(val > max) val = '';
+          row.push(val);
+        }
         res.push(row);
       }
       return res;

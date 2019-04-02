@@ -1,20 +1,20 @@
 <template>
 
-  <div class="birthday-picker_btn-pane birthday-picker_months">
-    <div class="birthday-picker_row" />
-    <div
-      v-for="(monthRow, i) in monthRows"
-      :key="'monthrow'+i"
-      class="birthday-picker_row"
-    >
-      <span
-        v-for="monthNum in monthRow"
-        :key="monthNum"
-        class="birthday-picker_btn birthday-picker_month"
-        :class="{'bdp-active': monthNum===value}"
-        @click.stop="emitInput(monthNum)"
-      >{{months[monthNum]}}</span>
-    </div>
+  <div class="birthday-picker_months">
+    <table cellspacing="0" cellpadding="0">
+      <tr><td :colspan="colsCount">&nbsp;</td></tr>
+
+      <tr v-for="(monthRow, i) in monthRows" :key="'monthrow'+i">
+        <td v-for="(monthNum, j) in monthRow" :key="'monthcell'+j">
+          <a
+           @click.stop="emitInput(monthNum)"
+          :class="{'bdp-active': monthNum===value, 'bdp-today': monthNum===today}"
+          >
+           {{months[monthNum]}}
+          </a>
+        </td>
+      </tr>
+    </table>
   </div>
 
 </template>
@@ -24,24 +24,28 @@ export default {
 
   props: {
     value:        { type: Number },
-    months:       { type: Array,  default: () => ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"] },
+    months:       { type: Array  },
 
   },
 
   data(){ return {
-    monthCols: 2,
+    colsCount: 2,
   }; },
 
   computed: {
+    today(){ return (new Date()).getMonth(); },
     monthRows(){
       const res = [];
       const max = 11;
-      let month = 0;
-      let row;
+      const rowsCount = Math.ceil(max/this.colsCount);
 
-      for(let r=0; month <= max; r++){
-        row = [];
-        for(let i=0; i < this.monthCols && month <= max; i++) row.push(month++);
+      for(let r=0; r < rowsCount; r++){
+        let row = [];
+        for(let i=0; i < this.colsCount; i++){
+          let month = r * this.colsCount + i;
+          if(month > max) month = '';
+          row.push(month);
+        }
         res.push(row);
       }
       return res;

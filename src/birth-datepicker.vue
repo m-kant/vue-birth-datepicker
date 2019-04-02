@@ -1,19 +1,48 @@
 <template>
 
-  <div class="birthday-picker" :class="{'birthday-picker_inline':inline, 'birthday-picker_high':high}">
-    <input type="text" class="" :value="valueStr" :placeholder="placeholder"  @click.stop.prevent="toggle()" @input="onManualInput" />
-    <div class="birthday-picker_carriage" :class="{'bp-opened': active}" @click.stop.prevent="toggle()"></div>
+  <div
+    class="birthday-picker"
+    :class="{'birthday-picker_inline':inline, 'birthday-picker_high':high}"
+
+    style=""
+  >
+    <input
+     type="text"
+     class=""
+     :value="valueStr"
+     :placeholder="placeholder"
+     @input="onManualInput"
+     @focus="inputIsFocused=true;"
+     @blur=" inputIsFocused=false; $nextTick(onWidgetBlur);"
+     @click="toggle();"
+    />
+    <div class="birthday-picker_carriage" :class="{'bp-opened': active}"></div>
 
     <transition name="dropdown-trans">
-      <div class="birthday-picker_dropdown" :class="'attach-'+attachmentX+' attach-'+attachmentY" v-if="active||inline">
+      <button
+        class="birthday-picker_dropdown"
+        :class="'attach-'+attachmentX+' attach-'+attachmentY"
+        v-if="active||inline"
+        click.stop=""
+        @focus="dropdownIsFocused=true;"
+        @blur=" dropdownIsFocused=false; $nextTick(onWidgetBlur);"
+      >
 
         <div v-if="!hideHeader" class="birthday-picker_dropdown-header">{{valueHeader}}</div>
-        <pick-day :value="day" @input="setDay" />
-        <pick-month :value="month" @input="setMonth" :months="months" />
-        <pick-year :value="year" @input="setYear" :min="minYear" :max="maxYear" />
 
-      </div>
+        <div class="birthday-picker_dropdown-body">
+
+          <div class="birthday-picker_days-months">
+            <pick-day :value="day" @input="setDay" />
+            <pick-month :value="month" @input="setMonth" :months="months" />
+          </div>
+
+          <pick-year :value="year" @input="setYear" :min="minYear" :max="maxYear" />
+
+        </div>
+      </button>
     </transition>
+
   </div>
 
 </template>
@@ -31,6 +60,7 @@ export default {
     valueIsString:{ type: Boolean, default: false },
     placeholder:  { type: String },
     attachment:   { type: String, default: 'bottom left' },
+    wildcard:     { type: String, default: '_' },
     delimiter:    { type: String, default: '.'},
     yearFirst:    { type: Boolean, default: false },
     closeOnSet:   { type: Boolean, default: false },
@@ -40,17 +70,30 @@ export default {
     locale:       { type: [String, Array],  default: "en" },
     minYear:      { type: [Number] },
     maxYear:      { type: Number },
+    selectYear:   { type: [Number, Boolean] },
   },
 
   components: { pickDay, pickMonth , pickYear },
 
-  beforeMount(){    this.assignValue(); },
+  beforeMount(){
+    this.assignValue();
+    // preselect current year
+    if(this.selectYear === true){
+      this.year = (new Date()).getFullYear();
+    // preselect given year
+    } else if(typeof this.selectYear === 'number'){
+      this.year = this.selectYear;
+    }
+  },
   beforeDestroy(){  this.removeClickOutHandler(); },
   watch: {
     value(){ this.assignValue(); },
   },
 
   data(){ return {
+    inputIsFocused: false,
+    dropdownIsFocused: false,
+    skipToggle: false, // when switch between dropdown and input
 
     day:    null,
     month:  null,
@@ -65,7 +108,6 @@ export default {
   }; },
 
   computed: {
-
     isFilled(){ return !(this.day === null || this.month === null || this.year === null); },
     months(){
       let loc;
@@ -103,15 +145,15 @@ export default {
       return pre.join(this.delimiter);
     },
     valueHeader() {
-      const d = this.dayStr? this.dayStr : '??';
-      const m = this.monthStr? this.months[this.month] : '???';
-      const y = this.year? this.year : '????';
+      const d = this.dayStr? this.dayStr : this.wildcard+this.wildcard;
+      const m = this.monthStr? this.months[this.month] : this.wildcard+this.wildcard+this.wildcard;
+      const y = this.year? this.year : this.wildcard+this.wildcard+this.wildcard+this.wildcard;
 
       return this.yearFirst? `${y} ${m} ${d}` : `${d} ${m} ${y}`;
     },
 
 
-    clickOutHandler(){ return ( function closeBdpicker(){ this.close(); } ).bind(this); },
+    // clickOutHandler(){ return ( function closeBdpicker(){ this.close(); } ).bind(this); },
 
   },
 
@@ -136,18 +178,23 @@ export default {
     },
     open(){
       this.active = true;
-      this.addClickOutHandler();
+      // this.addClickOutHandler();
     },
     close(){
       this.active = false;
-      this.removeClickOutHandler();
+      // this.removeClickOutHandler();
     },
     closeAfterSet(){
       if(!this.isFilled) return;
       if(!this.closeOnSet) return;
       this.close();
     },
-    toggle(){ (this.active)? this.close() : this.open(); },
+    toggle(){ this.active = !this.active; },
+    onWidgetBlur(){
+      if(!this.inputIsFocused && !this.dropdownIsFocused){
+        this.active = false;
+      }
+    },
     setDay(val){
       this.day = val;
       this.emitInput();

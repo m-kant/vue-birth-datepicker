@@ -7,18 +7,47 @@
   $primary-color: #007BFF;
   $line-color: rgba(0,0,0,0.1);
 
-  // cells width
-  $day-w:   $char-size*1.5;
-  $month-w: $char-size*2;
-  $year-w:  $char-size*1.5;
 
   font-family: Roboto, Helvetica, Arial, sans-serif;
   position: relative;
   display: inline-block;
-  min-width: 7em;
+  min-width: 8em;
   min-height: 2.5em;
   border: 1px solid $line-color;
   border-radius: 3px;
+  padding: 0;
+  background-color: transparent;
+
+  .disabled{
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  table{
+    width: 100%;
+  }
+
+  td{
+    text-align: center;
+
+    a{
+      display: block;
+      padding: 5px;
+      border-radius: $char-size;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: background-color 0.2s;
+
+      &:hover{ background-color: rgba(0,0,0,0.1); }
+    }
+  }
+  .bdp-today{ border-color: rgba(0,0,0,0.1); }
+  .bdp-active{
+    background-color: $primary-color;
+    color: #fff;
+    &:hover{ background-color: darken($primary-color, 10%); }
+  }
+
 
   input{
     position: absolute;
@@ -33,36 +62,36 @@
     border-radius: 5px;
   }
 
-  &_row{
-    height: 1.2 * $char-size;
-    line-height: 1.2 * $char-size;
+
+  &_dropdown-body{
+    display: flex;
+    flex-direction: row;
+  }
+  &_days-months{
+    display: flex;
+    flex-direction: row;
   }
 
-
-  // panes width
-  $days-w: $char-size * 10 * 0.8;
-  $months-w: $char-size * 6 * 0.7;
-  $years-w: $char-size * 11 * 2 * 0.75;
-
-  &_years{ width: $years-w; }
+  &_days,
+  &_months,
+  &_years{
+    padding: 0 2px;
+  }
+  &_days{
+    flex-grow: 2;
+  }
   &_months{
-    width: $months-w;
+    flex-grow: 1;
     border-right: 1px solid $line-color;
     border-left: 1px solid $line-color;
   }
-  &_days{ width: $days-w; }
-
-  &_day{ width: 20%; }
-  &_month{ width: 50%; }
-  &_year{
-    $w: 9.5%;
-    width: $w;
-    &:first-child{  width: 100% - $w * 9; }
-  }
 
   &_dropdown{
+    display: block;
+    padding: 0;
+    text-align: left;
     font-size: $char-size*0.75;
-    width: $days-w + $months-w + $years-w + 10px;
+
     position: absolute;
     background-color: #fff;
     border: 1px solid $line-color;
@@ -87,10 +116,9 @@
   }
 
   &_high{
-    .birthday-picker_dropdown{ width: $years-w; }
-    .birthday-picker_days{ width: $years-w * 0.70 - 2px;  }
-    .birthday-picker_months{ width: $years-w * 0.30; border-right: none;}
-    .birthday-picker_years{ border-top: 1px solid $line-color;}
+    .birthday-picker_dropdown-body{ flex-direction: column; }
+    .birthday-picker_months{ border-right: none; }
+    .birthday-picker_years{  border-top: 1px solid $line-color; }
   }
 
 
@@ -100,7 +128,7 @@
     right: 10px;
     width: 10px;
     height: calc(100% - 2*5px);
-    cursor: pointer;
+    pointer-events: none;
     transition: transform 0.3s;
 
     &:after{
@@ -115,31 +143,6 @@
     &.bp-opened{
       transform: rotate(180deg);
     }
-  }
-  &_row{
-    white-space: nowrap;
-  }
-  &_btn{
-    display: inline-block;
-    box-sizing: border-box;
-    padding: 3px;
-    margin: 0px;
-    cursor: pointer;
-    text-align: center;
-    border-radius: $char-size;
-    transition: background-color 0.3s;
-
-    &.bdp-active{ background-color: $primary-color; color: #fff; }
-    &.bdp-active:hover{ background-color: darken($primary-color,10); color: #fff; }
-    &:hover{ background-color: $line-color; }
-  }
-
-
-  &_btn-pane{
-    display: inline-block;
-    vertical-align: top;
-    height: $char-size*9.9;
-    overflow-y: auto;
   }
 
   // INLINE

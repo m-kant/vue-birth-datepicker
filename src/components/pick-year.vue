@@ -1,33 +1,35 @@
 <template>
 
-      <div class="birthday-picker_btn-pane birthday-picker_years">
+      <div class="birthday-picker_years">
+        <table cellspacing="0" cellpadding="0">
 
-        <div class="birthday-picker_row birthday-picker_row-header" @click.stop="increaseYear">
-          <i class="birthday-picker_carriage-up" v-if="ableToIncrease"/>
-        </div>
+          <tr class="bdp-increase-year" @click.stop="increaseYear">
+            <td :colspan="colsCount">
+              &nbsp; <i class="birthday-picker_carriage-up" v-if="ableToIncrease"/> &nbsp;
+            </td>
+          </tr>
 
-        <div class="birthday-picker_btn-pane-body">
-          <div
-            v-for="(yearRow, i) in rows"
-            :key="'yearrow'+i"
-            class="birthday-picker_row"
-          >
-            <span
-              v-for="year in yearRow"
-              :key="year"
-              class="birthday-picker_btn birthday-picker_year"
-              :class="{'bdp-active': year===value, 'disabled': year<min}"
-              @click.stop="emitInput(year)"
-            >{{yearStr(year)}}</span>
-          </div>
-        </div>
+          <tr v-for="(yearRow, i) in rows" :key="'yearrow'+i">
+            <td v-for="(year, j) in yearRow" :key="'yearrow'+j">
+              <a
+               v-if="year"
+               :class="{'bdp-active': year===value, 'disabled': year<min || (max&&year>max), 'bdp-today':year===today}"
+               @click.stop="emitInput(year)"
+              >
+                {{yearStr(year)}}
+              </a>
+            </td>
+          </tr>
 
-        <div class="birthday-picker_row-footer" @click.stop="decreaseYear">
-          <i class="birthday-picker_carriage-down" v-if="ableToDecrease" />
-        </div>
+          <tr class="bdp-decrease-year" @click.stop="decreaseYear">
+            <td :colspan="colsCount">
+              &nbsp; <i class="birthday-picker_carriage-down" v-if="ableToDecrease"/> &nbsp;
+            </td>
+          </tr>
+
+        </table>
 
       </div>
-
 </template>
 
 <script>
@@ -41,54 +43,61 @@ export default {
   },
 
   beforeMount(){
-    this.yearFrom =  (new Date()).getFullYear();
-    if(this.max && this.yearFrom > this.max) this.yearFrom = this.max;
+    this.yearFrom =  this.max ? this.max : (new Date()).getFullYear();
   },
 
   data(){ return {
 
     active: false,
     year:   null,
-    colsNum: 10,
-    rowsNum: 6,
+    colsCount: 10,
+    rowsCount: 6,
     yearFrom: null,
 
   }; },
 
   computed: {
+    today(){ return (new Date()).getFullYear(); },
     rows(){
       const res = [];
       const minDecade = this.min? this.floorToTens(this.min) : null;
       // round up to tens
       let rowYear = this.floorToTens(this.yearFrom);
 
-      for(let r=0; r < this.rowsNum; r++){
+      for(let r=0; r < this.rowsCount; r++){
         let row = [];
 
-        for(let c=0; c < this.colsNum; c++){
-          if(this.max && rowYear + c > this.max) break;
-          row.push(rowYear + c);
+        for(let c=0; c < this.colsCount; c++){
+          let curYear = rowYear + c;
+          // if(this.max && curYear > this.max) curYear = '';
+          row.push(curYear);
         }
 
         res.push(row);
-        rowYear = rowYear - this.colsNum;
+        rowYear = rowYear - this.colsCount;
         if(minDecade && rowYear < minDecade) break;
       }
       return res;
     },
     ableToDecrease(){
       if(!this.min) return true;
-      const min = this.yearFrom - this.rowsNum*this.colsNum;
+      const min = this.ceilToTens(this.yearFrom) - this.rowsCount*this.colsCount;
       return min > this.min;
     },
     ableToIncrease(){
       if(!this.max) return true;
-      const max = this.ceilToTens(this.yearFrom);
-      return max <= this.max;
+      return this.ceilToTens(this.yearFrom) < this.max + 1;
     },
   },
 
   methods: {
+    setYearFrom(y){
+      if(!this.max){
+        this.yearFrom = this.ceilToTens(y);
+      } else {
+        this.yearFrom = this.ceilToTens(this.max);
+      }
+    },
     floorToTens(num){ return Math.floor(num/10) * 10; },
     ceilToTens(num) { return Math.ceil(num/10) * 10; },
     assignValue(){
@@ -96,10 +105,11 @@ export default {
     },
     decreaseYear(){
       if(!this.ableToDecrease) return;
-      this.yearFrom -= this.colsNum*this.rowsNum; },
+      this.yearFrom -= this.colsCount*this.rowsCount; },
     increaseYear(){
       if(!this.ableToIncrease) return;
-      this.yearFrom += this.colsNum*this.rowsNum; },
+      this.setYearFrom( this.yearFrom + this.colsCount*this.rowsCount );
+    },
     emitInput(val){ this.$emit('input', val); },
     yearIsDecade(year){ return String(year).substr(-1) === '0'; },
     yearStr(year){
@@ -135,8 +145,8 @@ export default {
     border-right-color: transparent;
     border-left-color: transparent;
   }
-  &_row-header,
-  &_row-footer{
+  .bdp-increase-year,
+  .bdp-decrease-year{
     text-align: center;
     cursor: pointer;
     transition: background-color 0.2s;
@@ -146,10 +156,6 @@ export default {
     }
   }
 
-  &_year.disabled{
-    pointer-events: none;
-    opacity: 0.5;
-  }
 }
 
 </style>
