@@ -82,7 +82,7 @@ Configure datepicker look and behaviour with attributes
    <td>Input placeholder. Does not work in "inline" mode.</td>
  </tr>
  <tr>
-   <td>widcard</td>
+   <td>wildcard</td>
    <td>string</td>
    <td>'_'</td>
    <td>Character in widget header instead of date, shown when is nothing selected.</td>
