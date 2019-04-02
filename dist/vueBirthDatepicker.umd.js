@@ -2198,12 +2198,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"ee1740e0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/birth-datepicker.vue?vue&type=template&id=556581f2&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"ee1740e0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/birth-datepicker.vue?vue&type=template&id=6406c253&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"birthday-picker",class:{'birthday-picker_inline':_vm.inline, 'birthday-picker_high':_vm.high}},[_c('input',{attrs:{"type":"text","placeholder":_vm.placeholder},domProps:{"value":_vm.valueStr},on:{"input":_vm.onManualInput,"focus":function($event){_vm.inputIsFocused=true;},"blur":function($event){_vm.inputIsFocused=false; _vm.$nextTick(_vm.onWidgetBlur);},"click":function($event){_vm.toggle();}}}),_c('div',{staticClass:"birthday-picker_carriage",class:{'bp-opened': _vm.active}}),_c('transition',{attrs:{"name":"dropdown-trans"}},[(_vm.active||_vm.inline)?_c('button',{staticClass:"birthday-picker_dropdown",class:'attach-'+_vm.attachmentX+' attach-'+_vm.attachmentY,attrs:{"click.stop":""},on:{"focus":function($event){_vm.dropdownIsFocused=true;},"blur":function($event){_vm.dropdownIsFocused=false; _vm.$nextTick(_vm.onWidgetBlur);}}},[(!_vm.hideHeader)?_c('div',{staticClass:"birthday-picker_dropdown-header"},[_vm._v(_vm._s(_vm.valueHeader))]):_vm._e(),_c('div',{staticClass:"birthday-picker_dropdown-body"},[_c('div',{staticClass:"birthday-picker_days-months"},[_c('pick-day',{attrs:{"value":_vm.day},on:{"input":_vm.setDay}}),_c('pick-month',{attrs:{"value":_vm.month,"months":_vm.months},on:{"input":_vm.setMonth}})],1),_c('pick-year',{attrs:{"value":_vm.year,"min":_vm.minYear,"max":_vm.maxYear},on:{"input":_vm.setYear}})],1)]):_vm._e()])],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/birth-datepicker.vue?vue&type=template&id=556581f2&
+// CONCATENATED MODULE: ./src/birth-datepicker.vue?vue&type=template&id=6406c253&
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/builtin/es6/arrayWithHoles.js
 function _arrayWithHoles(arr) {
@@ -2830,7 +2830,7 @@ pick_year_component.options.__file = "pick-year.vue"
     },
     closeOnSet: {
       type: Boolean,
-      default: false
+      default: true
     },
     hideHeader: {
       type: Boolean,

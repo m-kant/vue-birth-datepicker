@@ -63,7 +63,7 @@ export default {
     wildcard:     { type: String, default: '_' },
     delimiter:    { type: String, default: '.'},
     yearFirst:    { type: Boolean, default: false },
-    closeOnSet:   { type: Boolean, default: false },
+    closeOnSet:   { type: Boolean, default: true },
     hideHeader:   { type: Boolean, default: false },
     inline:       { type: Boolean, default: false },
     high:         { type: Boolean, default: false },
