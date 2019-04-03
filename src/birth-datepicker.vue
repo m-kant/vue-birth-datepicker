@@ -13,20 +13,20 @@
      :placeholder="placeholder"
      :disabled="disabled"
      @input="onManualInput"
-     @focus="inputIsFocused=true;"
-     @blur=" inputIsFocused=false; $nextTick(onWidgetBlur);"
+     @focus="focusInput();"
+     @blur=" focusInput(false);"
      @click="toggle();"
     />
     <div class="birthday-picker_carriage" :class="{'bp-opened': active}"></div>
 
     <transition name="dropdown-trans">
-      <button
+      <div
+        tabindex="-1"
         class="birthday-picker_dropdown"
         :class="'attach-'+attachmentX+' attach-'+attachmentY"
         v-if="active||inline"
-        @focus="dropdownIsFocused=true;"
-        @blur=" dropdownIsFocused=false; $nextTick(onWidgetBlur);"
-        @click.stop.prevent="nothing"
+        @focus="focusDropdown();"
+        @blur=" focusDropdown(false);"
       >
 
         <div v-if="!hideHeader" class="birthday-picker_dropdown-header">{{valueHeader}}</div>
@@ -34,14 +34,14 @@
         <div class="birthday-picker_dropdown-body">
 
           <div class="birthday-picker_days-months">
-            <pick-day :value="day" @input="setDay" />
+            <pick-day :value="day" @input="setDay" @click="log(click);focusDropdown()" />
             <pick-month :value="month" @input="setMonth" :months="months" />
           </div>
 
           <pick-year :value="year" @input="setYear" :min="minYear" :max="maxYear" />
 
         </div>
-      </button>
+      </div>
     </transition>
 
   </div>
@@ -93,8 +93,8 @@ export default {
   },
 
   data(){ return {
-    inputIsFocused: false,
-    dropdownIsFocused: false,
+    focusIsOnInput: false,
+    focusIsOnDropdown: false,
     skipToggle: false, // when switch between dropdown and input
 
     day:    null,
@@ -161,6 +161,7 @@ export default {
 
   methods: {
     nothing(){ },
+    log(m){ console.log(m); },
     assignValue(){
       if (this.valueIsString && this.value) {
         if(!this.parseStringDate(this.value)) throw new Error('Can not parse date string');
@@ -179,13 +180,37 @@ export default {
         this.year =  null;
       }
     },
+    focusDropdown(isFocused=true){
+      this.focusIsOnDropdown = isFocused;
+      // console.log(`focusDrop(${isFocused}): drop=${this.focusIsOnDropdown} input=${this.focusIsOnInput}`);
+      if(isFocused){
+        this.focusIsOnInput = false; // because of IE
+      } else {
+        // because of IE $nextTick does not work, as well as low timeout - less then 100
+        setTimeout(this.onWidgetBlur.bind(this),100);
+      }
+    },
+    focusInput(isFocused=true){
+      this.focusIsOnInput = isFocused;
+      // console.log(`focusInput(${isFocused}): drop=${this.focusIsOnDropdown} input=${this.focusIsOnInput}`);
+      if(isFocused){
+        this.focusIsOnDropdown = false; // because of IE, where dropdown.blur work abnormally
+      } else {
+        // because of IE $nextTick does not work, as well as low timeout - less then 100
+        setTimeout(this.onWidgetBlur.bind(this),100);
+      }
+
+    },
+    onWidgetBlur(){
+      if(!this.focusIsOnInput && !this.focusIsOnDropdown){
+        this.active = false;
+      }
+    },
     open(){
       this.active = true;
-      // this.addClickOutHandler();
     },
     close(){
       this.active = false;
-      // this.removeClickOutHandler();
     },
     closeAfterSet(){
       if(!this.isFilled) return;
@@ -193,22 +218,20 @@ export default {
       this.close();
     },
     toggle(){ this.active = !this.active; },
-    onWidgetBlur(){
-      if(!this.inputIsFocused && !this.dropdownIsFocused){
-        this.active = false;
-      }
-    },
     setDay(val){
+      this.focusDropdown(true); // for IE to not loose focus of dropdown
       this.day = val;
       this.emitInput();
       this.closeAfterSet();
     },
     setMonth(val){
+      this.focusDropdown(true); // for IE to not loose focus of dropdown
       this.month = val;
       this.emitInput();
       this.closeAfterSet();
     },
     setYear(val){
+      this.focusDropdown(true); // for IE to not loose focus of dropdown
       this.year = val;
       this.emitInput();
       this.closeAfterSet();

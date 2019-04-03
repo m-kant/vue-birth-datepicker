@@ -15,7 +15,7 @@
           <a
             v-if="dayItem"
            :class="{'bdp-active': dayItem===value, 'bdp-today': dayItem===today}"
-           @click.stop.prevent="emitInput(dayItem)"
+           @click="emitInput(dayItem)"
           >{{dayItem}}</a>
         </td>
       </tr>

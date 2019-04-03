@@ -102,7 +102,7 @@ export default {
 
       inline: false,
       high: false,
-      closeOnSet: false,
+      closeOnSet: true,
       valueIsString: false,
       yearFirst: false,
       hideHeader: false,
