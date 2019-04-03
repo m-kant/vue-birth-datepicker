@@ -2,7 +2,7 @@
 
   <div
     class="birthday-picker"
-    :class="{'birthday-picker_inline':inline, 'birthday-picker_high':high}"
+    :class="{'birthday-picker_inline':inline, 'birthday-picker_high':high, 'disabled':disabled}"
 
     style=""
   >
@@ -11,6 +11,7 @@
      class=""
      :value="valueStr"
      :placeholder="placeholder"
+     :disabled="disabled"
      @input="onManualInput"
      @focus="inputIsFocused=true;"
      @blur=" inputIsFocused=false; $nextTick(onWidgetBlur);"
@@ -58,6 +59,7 @@ export default {
   props: {
     value:        { type: [Number, String] },
     valueIsString:{ type: Boolean, default: false },
+    disabled:     { type: Boolean },
     placeholder:  { type: String },
     attachment:   { type: String, default: 'bottom left' },
     wildcard:     { type: String, default: '_' },
@@ -158,7 +160,7 @@ export default {
   },
 
   methods: {
-    nothing(){console.log('nothing');},
+    nothing(){ },
     assignValue(){
       if (this.valueIsString && this.value) {
         if(!this.parseStringDate(this.value)) throw new Error('Can not parse date string');

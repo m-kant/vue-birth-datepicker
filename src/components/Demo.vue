@@ -31,6 +31,7 @@
           :minYear="minYear?Number(minYear):null"
           :maxYear="maxYear?Number(maxYear):null"
           :locale="calcLocale"
+          :disabled="disabled"
         />
       </div>
 
@@ -49,6 +50,7 @@
           <label><input type="checkbox" v-model="inline"> inline</label>
           <label><input type="checkbox" v-model="high"> high</label>
           <label><input type="checkbox" v-model="hideHeader"> hideHeader</label>
+          <label><input type="checkbox" v-model="disabled"> disabled</label>
         </div>
         <div class="col4">
           <h4>For not-inline</h4>
@@ -104,6 +106,7 @@ export default {
       valueIsString: false,
       yearFirst: false,
       hideHeader: false,
+      disabled: false,
       delimiter: '.',
       placeholder: 'Wow!',
       attachment: 'bottom left',
