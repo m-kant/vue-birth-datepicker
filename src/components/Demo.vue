@@ -9,7 +9,9 @@
 
       <h3>Basic</h3>
       <div class='code-pane'>{{codeBasic}}</div>
-      <birth-datepicker v-model="date" selectYear/>
+      <div style="margin-bottom: 500px">
+        <birth-datepicker v-model="date" selectYear high/>
+      </div>
 
       <h3>Inline</h3>
       <div class='code-pane'>{{codeInline}}</div>

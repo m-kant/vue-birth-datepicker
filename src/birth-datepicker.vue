@@ -161,7 +161,7 @@ export default {
 
   methods: {
     nothing(){ },
-    log(m){ console.log(m); },
+    // log(m){ console.log(m); },
     assignValue(){
       if (this.valueIsString && this.value) {
         if(!this.parseStringDate(this.value)) throw new Error('Can not parse date string');

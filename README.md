@@ -58,6 +58,12 @@ Configure datepicker look and behaviour with attributes
    <td>If "true", widget is shown as inline-block element. Otherwise as an input with opening dropdown.</td>
  </tr>
  <tr>
+   <td>disabled</td>
+   <td>boolean</td>
+   <td>false</td>
+   <td>Disables input, if "true".</td>
+ </tr>
+ <tr>
    <td>high</td>
    <td>boolean</td>
    <td>false</td>

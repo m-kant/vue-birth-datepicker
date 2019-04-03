@@ -1211,12 +1211,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"ee1740e0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/birth-datepicker.vue?vue&type=template&id=95f8aba8&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"birthday-picker",class:{'birthday-picker_inline':_vm.inline, 'birthday-picker_high':_vm.high}},[_c('input',{attrs:{"type":"text","placeholder":_vm.placeholder},domProps:{"value":_vm.valueStr},on:{"input":_vm.onManualInput,"focus":function($event){_vm.inputIsFocused=true;},"blur":function($event){_vm.inputIsFocused=false; _vm.$nextTick(_vm.onWidgetBlur);},"click":function($event){_vm.toggle();}}}),_c('div',{staticClass:"birthday-picker_carriage",class:{'bp-opened': _vm.active}}),_c('transition',{attrs:{"name":"dropdown-trans"}},[(_vm.active||_vm.inline)?_c('button',{staticClass:"birthday-picker_dropdown",class:'attach-'+_vm.attachmentX+' attach-'+_vm.attachmentY,on:{"focus":function($event){_vm.dropdownIsFocused=true;},"blur":function($event){_vm.dropdownIsFocused=false; _vm.$nextTick(_vm.onWidgetBlur);},"click":function($event){$event.stopPropagation();$event.preventDefault();return _vm.nothing($event)}}},[(!_vm.hideHeader)?_c('div',{staticClass:"birthday-picker_dropdown-header"},[_vm._v(_vm._s(_vm.valueHeader))]):_vm._e(),_c('div',{staticClass:"birthday-picker_dropdown-body"},[_c('div',{staticClass:"birthday-picker_days-months"},[_c('pick-day',{attrs:{"value":_vm.day},on:{"input":_vm.setDay}}),_c('pick-month',{attrs:{"value":_vm.month,"months":_vm.months},on:{"input":_vm.setMonth}})],1),_c('pick-year',{attrs:{"value":_vm.year,"min":_vm.minYear,"max":_vm.maxYear},on:{"input":_vm.setYear}})],1)]):_vm._e()])],1)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"ee1740e0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/birth-datepicker.vue?vue&type=template&id=5bf646f0&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"birthday-picker",class:{'birthday-picker_inline':_vm.inline, 'birthday-picker_high':_vm.high, 'disabled':_vm.disabled}},[_c('input',{attrs:{"type":"text","placeholder":_vm.placeholder,"disabled":_vm.disabled},domProps:{"value":_vm.valueStr},on:{"input":_vm.onManualInput,"focus":function($event){_vm.focusInput();},"blur":function($event){_vm.focusInput(false);},"click":function($event){_vm.toggle();}}}),_c('div',{staticClass:"birthday-picker_carriage",class:{'bp-opened': _vm.active}}),_c('transition',{attrs:{"name":"dropdown-trans"}},[(_vm.active||_vm.inline)?_c('div',{staticClass:"birthday-picker_dropdown",class:'attach-'+_vm.attachmentX+' attach-'+_vm.attachmentY,attrs:{"tabindex":"-1"},on:{"focus":function($event){_vm.focusDropdown();},"blur":function($event){_vm.focusDropdown(false);}}},[(!_vm.hideHeader)?_c('div',{staticClass:"birthday-picker_dropdown-header"},[_vm._v(_vm._s(_vm.valueHeader))]):_vm._e(),_c('div',{staticClass:"birthday-picker_dropdown-body"},[_c('div',{staticClass:"birthday-picker_days-months"},[_c('pick-day',{attrs:{"value":_vm.day},on:{"input":_vm.setDay,"click":function($event){_vm.log(_vm.click);_vm.focusDropdown()}}}),_c('pick-month',{attrs:{"value":_vm.month,"months":_vm.months},on:{"input":_vm.setMonth}})],1),_c('pick-year',{attrs:{"value":_vm.year,"min":_vm.minYear,"max":_vm.maxYear},on:{"input":_vm.setYear}})],1)]):_vm._e()])],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/birth-datepicker.vue?vue&type=template&id=95f8aba8&
+// CONCATENATED MODULE: ./src/birth-datepicker.vue?vue&type=template&id=5bf646f0&
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/builtin/es6/arrayWithHoles.js
 function _arrayWithHoles(arr) {
@@ -1274,12 +1274,12 @@ var es6_string_includes = __webpack_require__("2fdb");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.number.constructor.js
 var es6_number_constructor = __webpack_require__("c5f6");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"ee1740e0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/pick-day.vue?vue&type=template&id=6886e8f3&
-var pick_dayvue_type_template_id_6886e8f3_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"birthday-picker_days"},[_c('table',{attrs:{"cellspacing":"0","cellpadding":"0"}},[_c('tr',[_c('td',{attrs:{"colspan":_vm.colsCount}},[_vm._v(" ")])]),_vm._l((_vm.dayRows),function(dayRow,i){return _c('tr',{key:'dayrow'+i},_vm._l((dayRow),function(dayItem,j){return _c('td',{key:'daycell'+j},[(dayItem)?_c('a',{class:{'bdp-active': dayItem===_vm.value, 'bdp-today': dayItem===_vm.today},on:{"click":function($event){$event.stopPropagation();$event.preventDefault();_vm.emitInput(dayItem)}}},[_vm._v(_vm._s(dayItem))]):_vm._e()])}))})],2)])}
-var pick_dayvue_type_template_id_6886e8f3_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"ee1740e0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/pick-day.vue?vue&type=template&id=5b308cdd&
+var pick_dayvue_type_template_id_5b308cdd_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"birthday-picker_days"},[_c('table',{attrs:{"cellspacing":"0","cellpadding":"0"}},[_c('tr',[_c('td',{attrs:{"colspan":_vm.colsCount}},[_vm._v(" ")])]),_vm._l((_vm.dayRows),function(dayRow,i){return _c('tr',{key:'dayrow'+i},_vm._l((dayRow),function(dayItem,j){return _c('td',{key:'daycell'+j},[(dayItem)?_c('a',{class:{'bdp-active': dayItem===_vm.value, 'bdp-today': dayItem===_vm.today},on:{"click":function($event){_vm.emitInput(dayItem)}}},[_vm._v(_vm._s(dayItem))]):_vm._e()])}))})],2)])}
+var pick_dayvue_type_template_id_5b308cdd_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/pick-day.vue?vue&type=template&id=6886e8f3&
+// CONCATENATED MODULE: ./src/components/pick-day.vue?vue&type=template&id=5b308cdd&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/pick-day.vue?vue&type=script&lang=js&
 
@@ -1462,8 +1462,8 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   components_pick_dayvue_type_script_lang_js_,
-  pick_dayvue_type_template_id_6886e8f3_render,
-  pick_dayvue_type_template_id_6886e8f3_staticRenderFns,
+  pick_dayvue_type_template_id_5b308cdd_render,
+  pick_dayvue_type_template_id_5b308cdd_staticRenderFns,
   false,
   null,
   null,
@@ -1794,6 +1794,7 @@ pick_year_component.options.__file = "pick-year.vue"
 //
 //
 //
+//
 
 
 
@@ -1806,6 +1807,9 @@ pick_year_component.options.__file = "pick-year.vue"
     valueIsString: {
       type: Boolean,
       default: false
+    },
+    disabled: {
+      type: Boolean
     },
     placeholder: {
       type: String
@@ -1880,8 +1884,8 @@ pick_year_component.options.__file = "pick-year.vue"
   },
   data: function data() {
     return {
-      inputIsFocused: false,
-      dropdownIsFocused: false,
+      focusIsOnInput: false,
+      focusIsOnDropdown: false,
       skipToggle: false,
       // when switch between dropdown and input
       day: null,
@@ -1943,9 +1947,8 @@ pick_year_component.options.__file = "pick-year.vue"
     }
   },
   methods: {
-    nothing: function nothing() {
-      console.log('nothing');
-    },
+    nothing: function nothing() {},
+    // log(m){ console.log(m); },
     assignValue: function assignValue() {
       if (this.valueIsString && this.value) {
         if (!this.parseStringDate(this.value)) throw new Error('Can not parse date string'); // value is a timestamp
@@ -1960,11 +1963,38 @@ pick_year_component.options.__file = "pick-year.vue"
         this.year = null;
       }
     },
+    focusDropdown: function focusDropdown() {
+      var isFocused = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+      this.focusIsOnDropdown = isFocused; // console.log(`focusDrop(${isFocused}): drop=${this.focusIsOnDropdown} input=${this.focusIsOnInput}`);
+
+      if (isFocused) {
+        this.focusIsOnInput = false; // because of IE
+      } else {
+        // because of IE $nextTick does not work, as well as low timeout - less then 100
+        setTimeout(this.onWidgetBlur.bind(this), 100);
+      }
+    },
+    focusInput: function focusInput() {
+      var isFocused = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+      this.focusIsOnInput = isFocused; // console.log(`focusInput(${isFocused}): drop=${this.focusIsOnDropdown} input=${this.focusIsOnInput}`);
+
+      if (isFocused) {
+        this.focusIsOnDropdown = false; // because of IE, where dropdown.blur work abnormally
+      } else {
+        // because of IE $nextTick does not work, as well as low timeout - less then 100
+        setTimeout(this.onWidgetBlur.bind(this), 100);
+      }
+    },
+    onWidgetBlur: function onWidgetBlur() {
+      if (!this.focusIsOnInput && !this.focusIsOnDropdown) {
+        this.active = false;
+      }
+    },
     open: function open() {
-      this.active = true; // this.addClickOutHandler();
+      this.active = true;
     },
     close: function close() {
-      this.active = false; // this.removeClickOutHandler();
+      this.active = false;
     },
     closeAfterSet: function closeAfterSet() {
       if (!this.isFilled) return;
@@ -1974,22 +2004,23 @@ pick_year_component.options.__file = "pick-year.vue"
     toggle: function toggle() {
       this.active = !this.active;
     },
-    onWidgetBlur: function onWidgetBlur() {
-      if (!this.inputIsFocused && !this.dropdownIsFocused) {
-        this.active = false;
-      }
-    },
     setDay: function setDay(val) {
+      this.focusDropdown(true); // for IE to not loose focus of dropdown
+
       this.day = val;
       this.emitInput();
       this.closeAfterSet();
     },
     setMonth: function setMonth(val) {
+      this.focusDropdown(true); // for IE to not loose focus of dropdown
+
       this.month = val;
       this.emitInput();
       this.closeAfterSet();
     },
     setYear: function setYear(val) {
+      this.focusDropdown(true); // for IE to not loose focus of dropdown
+
       this.year = val;
       this.emitInput();
       this.closeAfterSet();
