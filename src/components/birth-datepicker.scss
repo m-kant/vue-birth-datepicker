@@ -137,6 +137,7 @@
     width: 10px;
     height: calc(100% - 2*5px);
     pointer-events: none;
+    text-align: left;
     transition: transform 0.3s;
 
     &:after{
