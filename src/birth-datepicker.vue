@@ -80,12 +80,7 @@ export default {
   beforeMount(){
     this.assignValue();
     // preselect current year
-    if(this.selectYear === true){
-      this.year = (new Date()).getFullYear();
-    // preselect given year
-    } else if(typeof this.selectYear === 'number'){
-      this.year = this.selectYear;
-    }
+    if(!this.value) this.autoSelectYear();
   },
   beforeDestroy(){  this.removeClickOutHandler(); },
   watch: {
@@ -178,6 +173,17 @@ export default {
         this.day =   null;
         this.month = null;
         this.year =  null;
+      }
+    },
+    autoSelectYear(){
+      if(this.value) return; //don't autoset year if value is imposed
+
+      // preselect current year
+      if(this.selectYear === true){
+        this.year = (new Date()).getFullYear();
+      // preselect given year
+      } else if(typeof this.selectYear === 'number'){
+        this.year = this.selectYear;
       }
     },
     focusDropdown(isFocused=true){

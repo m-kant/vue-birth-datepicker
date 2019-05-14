@@ -1,4 +1,5 @@
 # TODO
+- hide year or month or day to select only years or months
 - append to body
 - auto select localization depending on browser
 - display dropdown on selected date (date can be out of current displayed range)

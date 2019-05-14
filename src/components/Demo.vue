@@ -7,6 +7,12 @@
       <p>Date picker for distant dates, such as birthday.
         Just three clicks to choose any month and day 20 or 50 years ago.</p>
 
+      <h3>Assign</h3>
+      <div class='code-pane'>{{(new Date(someVal)).toString()}}</div>
+      <div style="">
+        <birth-datepicker v-model="someVal" select-year />
+      </div>
+
       <h3>Basic</h3>
       <div class='code-pane'>{{codeBasic}}</div>
       <div style="">
@@ -15,7 +21,7 @@
 
       <h3>Inline</h3>
       <div class='code-pane'>{{codeInline}}</div>
-      <birth-datepicker v-model="date" :inline="true" selectYear />
+      <birth-datepicker v-model="date" :inline="true" select-year />
 
       <h3>Playground</h3>
       <div style="padding: 10px; background-color: #eee;" @click.stop.prevent="">
@@ -43,7 +49,7 @@
         <div class="col4">
           <h4>Output</h4>
           <label>
-            <div class="remark">String or timestamp for local date 00 hours 00 minutes</div>
+            <div class="remark">String or timestamp for UTC date 00 hours 00 minutes</div>
             value: {{date}}</label>
           <label>
             <div class="remark">Reselect date after changing "valueIsString" to affect value</div>
@@ -93,6 +99,9 @@ export default {
 
     beforeMount(){
         // this.date = Date.now();
+        let d = new Date();
+        d.setUTCHours(0,0,0,0);
+        this.someVal = d.setUTCFullYear(2037,8,30);
     },
 
   components: {
@@ -101,6 +110,8 @@ export default {
 
   data(){ return {
       date: null,
+
+      someVal: null,
 
       inline: false,
       high: false,
@@ -119,7 +130,7 @@ export default {
       customLocale: 'JN FB MR AP MY JU JL AG SP OK NV DC',
 
       codeBasic: '<birth-datepicker v-model="date" />',
-      codeInline: '<birth-datepicker v-model="date" :inline="true" selectYear />'
+      codeInline: '<birth-datepicker v-model="date" :inline="true" select-year />'
   }; },
 
   computed: {
