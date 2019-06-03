@@ -98,10 +98,10 @@ import birthDatepicker from '../birth-datepicker';
 export default {
 
     beforeMount(){
-        // this.date = Date.now();
-        let d = new Date();
-        d.setUTCHours(0,0,0,0);
-        this.someVal = d.setUTCFullYear(2037,8,30);
+      // this.date = Date.now();
+      let d = new Date();
+      d.setUTCHours(0,0,0,0);
+      this.someVal = d.setUTCFullYear(2037,8,30);
     },
 
   components: {

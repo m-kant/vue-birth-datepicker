@@ -3,7 +3,6 @@
   <div
     class="birthday-picker"
     :class="{'birthday-picker_inline':inline, 'birthday-picker_high':high, 'disabled':disabled}"
-
     style=""
   >
     <input
@@ -12,6 +11,7 @@
      :value="valueStr"
      :placeholder="placeholder"
      :disabled="disabled"
+     :required="required"
      @input="onManualInput"
      @focus="focusInput();"
      @blur=" focusInput(false);"
@@ -60,6 +60,7 @@ export default {
     value:        { type: [Number, String] },
     valueIsString:{ type: Boolean, default: false },
     disabled:     { type: Boolean },
+    required:     { type: Boolean },
     placeholder:  { type: String },
     attachment:   { type: String, default: 'bottom left' },
     wildcard:     { type: String, default: '_' },
@@ -255,6 +256,7 @@ export default {
     onManualInput(ev){
       // get value
       const val = ev.target.value.replace(/\s+/g, '');
+      if(!val) this.$emit('input', undefined);
       // emit input if parsed successfully
       if(this.parseStringDate(val)) this.emitInput();
     },
