@@ -19,6 +19,7 @@
   "private": false,
   "keywords": [
     "vue",
+    "component",
     "datepicker",
     "birthday picker",
     "distant date",
