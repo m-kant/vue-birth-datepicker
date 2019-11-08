@@ -7,3 +7,4 @@
 - describe in Demo how to stylize widget
 - stylize input via .datepicker styles
 - check component programming style with recomendations "how to write good components"
+- формат шрифта другой - не такой как в других инпутах

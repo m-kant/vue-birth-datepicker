@@ -1,7 +1,7 @@
 {
   "name": "vue-birth-datepicker",
   "description": "Date picker for distant dates, such as birthday. Just three clicks to choose any month and day 20 or 50 years ago.",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -12,6 +12,7 @@
   "main": "dist/vueBirthDatepicker.common.js",
   "module": "dist/vueBirthDatepicker.umd.js",
   "unpkg": "dist/vueBirthDatepicker.umd.min.js",
+  "type": "src/birth-datepicker.d.ts",
   "browser": {
     "./vue": "src/birth-datepicker.vue"
   },
@@ -34,13 +35,13 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "vue": "^2.5.17",
-    "@vue/cli-plugin-babel": "^3.0.5",
-    "@vue/cli-plugin-eslint": "^3.0.5",
-    "@vue/cli-service": "^3.0.5",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.5.17"
+    "@vue/cli-plugin-babel": "^4.0.5",
+    "@vue/cli-plugin-eslint": "^3.12.1",
+    "@vue/cli-service": "^4.0.5",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
     "root": true,

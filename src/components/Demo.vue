@@ -16,7 +16,7 @@
       <h3>Basic</h3>
       <div class='code-pane'>{{codeBasic}}</div>
       <div style="">
-        <birth-datepicker v-model="date" selectYear />
+        <birth-datepicker v-model="date" selectYear required />
       </div>
 
       <h3>Inline</h3>
@@ -96,6 +96,7 @@
 import birthDatepicker from '../birth-datepicker';
 
 export default {
+  name: "birthDatepickerDemo",
 
     beforeMount(){
       // this.date = Date.now();
