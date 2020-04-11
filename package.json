@@ -24,7 +24,9 @@
     "birthday picker",
     "distant date",
     "date",
-    "birthday"
+    "birthday",
+	"ecosystem:vue",
+	"ecosystem:vuejs"
   ],
   "license": "MIT",
   "repository": {

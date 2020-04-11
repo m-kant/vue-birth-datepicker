@@ -193,7 +193,7 @@ export default {
       if(isFocused){
         this.focusIsOnInput = false; // because of IE
       } else {
-        // because of IE $nextTick does not work, as well as low timeout - less then 100
+        // because of IE: $nextTick does not work, as well as low timeout - less then 100
         setTimeout(this.onWidgetBlur.bind(this),100);
       }
     },
